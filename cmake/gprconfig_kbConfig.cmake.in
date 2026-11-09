@@ -1,0 +1,11 @@
+@PACKAGE_INIT@
+
+set_and_check(gprconfig_kb_DB_DIR "@PACKAGE_GPRCONFIG_KB_INSTALL_DIR@")
+set(gprconfig_kb_VERSION "@PROJECT_VERSION@")
+
+if(NOT TARGET gprconfig_kb::db)
+  add_library(gprconfig_kb::db INTERFACE IMPORTED)
+  set_target_properties(gprconfig_kb::db PROPERTIES
+    INTERFACE_GPRCONFIG_KB_DB_DIR "${gprconfig_kb_DB_DIR}")
+endif()
+check_required_components(gprconfig_kb)
